@@ -8,5 +8,5 @@ type InvalidArgument struct {
 
 
 func (e *InvalidArgument) Error() string {
-	return fmt.Sprintf("Invalid Argument: ", e.Name)
+	return fmt.Sprintf("Invalid Argument: %s", e.Name)
 }

@@ -56,7 +56,6 @@ func (p *UPSDeploy) CreateUserProvidedService(ups utils.UserProvidedService) err
 	jsonString, err := ups.MarshalCredentials()
 
 	if err != nil {
-		fmt.Errorf("%s\n", err.Error())
 		return err
 	}
 
@@ -68,7 +67,6 @@ func (p *UPSDeploy) UpdateUserProvidedService(ups utils.UserProvidedService) err
 	jsonString, err := ups.MarshalCredentials()
 
 	if err != nil {
-		fmt.Errorf("%s\n", err.Error())
 		return err
 	}
 

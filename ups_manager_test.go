@@ -7,7 +7,6 @@ import (
 	"code.cloudfoundry.org/cli/plugin/pluginfakes"
 	"cf-ups-deployer/utils"
 	"os/exec"
-	"fmt"
 	"bytes"
 	"strings"
 )
@@ -29,7 +28,7 @@ var _ = Describe("UPS Deployer", func() {
 		}
 		upsDeployerOut = &bytes.Buffer{}
 		connection = pluginfakes.FakeCliConnection{}
-		fmt.Sprintf("%p", connection)
+
 		p = UPSDeploy{
 			Connection: &connection,
 			Out: upsDeployerOut,
@@ -198,7 +197,7 @@ var _ = Describe("UPS Deployer", func() {
 				if args[0] == "cups" {
 					return nil, &exec.Error{}
 				} else {
-					return nil, &exec.Error{"Hello World", nil}
+					return nil, &exec.Error{Name: "Hello World", Err: nil}
 				}
 			}
 			p.Deploy(spaceone, nil)

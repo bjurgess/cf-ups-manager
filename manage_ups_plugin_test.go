@@ -65,7 +65,7 @@ var _ = Describe("UPS Deployer", func() {
 		It("Should throw exception on get current space error", func() {
 			cliConnection.GetCurrentSpaceStub = func() (plugin_models.Space, error) {
 				var space plugin_models.Space
-				return space, &exec.Error{"Not logged In", nil}
+				return space, &exec.Error{Name: "Not logged In", Err: nil}
 			}
 			cmd.Run(cliConnection, []string{"asdf", "-f", "fixtures/ups-list.yml"})
 			Expect(expectedException[0]).To(HaveOccurred())
