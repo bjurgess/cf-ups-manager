@@ -1,0 +1,20 @@
+---
+spaces:
+- name: dev
+  user-provided-services
+  - name: UPS1
+  - name: UPS2
+    credentials:
+      Credential1: 1
+      Credential2: 2
+      Credential3: 3
+- name: qa
+  user-provided-services:
+  - name: UPSqa1
+    credentials:
+      Credential1: 1
+      Credential2: 2
+      Credential3: 3
+- name: stage
+  user-provided-services:
+...
