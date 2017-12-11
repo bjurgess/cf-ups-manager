@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"cf-ups-deployer/errors"
+	"github.com/bjurgess1/cf-ups-manager/errors"
 	"encoding/json"
 )
 

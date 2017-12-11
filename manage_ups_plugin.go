@@ -2,8 +2,8 @@ package main
 
 import (
 	"code.cloudfoundry.org/cli/plugin"
-	"cf-ups-deployer/errors"
-	"cf-ups-deployer/utils"
+	"github.com/bjurgess1/cf-ups-manager/utils"
+	"github.com/bjurgess1/cf-ups-manager/errors"
 	"fmt"
 	"log"
 	"os"

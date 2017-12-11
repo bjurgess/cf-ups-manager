@@ -5,7 +5,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"code.cloudfoundry.org/cli/plugin/pluginfakes"
-	"cf-ups-deployer/utils"
+	"github.com/bjurgess1/cf-ups-manager/utils"
 	"os/exec"
 	"bytes"
 	"strings"

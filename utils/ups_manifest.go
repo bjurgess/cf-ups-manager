@@ -1,6 +1,6 @@
 package utils
 
-import "cf-ups-deployer/errors"
+import "github.com/bjurgess1/cf-ups-manager/errors"
 
 type UPSManifest struct {
 	Spaces []Space `yaml:"spaces"`
