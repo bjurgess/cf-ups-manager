@@ -2,7 +2,7 @@ package main_test
 
 import (
 	"bytes"
-	. "cf-ups-deployer"
+	. "cf-ups-manager"
 	"os/exec"
 
 	"code.cloudfoundry.org/cli/plugin/models"

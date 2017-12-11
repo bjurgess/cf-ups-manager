@@ -1,7 +1,7 @@
 package utils_test
 
 import (
-	. "cf-ups-deployer/utils"
+	. "cf-ups-manager/utils"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

@@ -1,7 +1,7 @@
 package main_test
 
 import (
-	. "cf-ups-deployer"
+	. "cf-ups-manager"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"code.cloudfoundry.org/cli/plugin/pluginfakes"
