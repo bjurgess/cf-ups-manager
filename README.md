@@ -1,5 +1,5 @@
 # User Provided Service Manager
-
+[![Build Status](https://travis-ci.org/bjurgess1/cf-ups-manager.svg?branch=master)](https://travis-ci.org/bjurgess1/cf-ups-manager)
 ## Introduction
 Cloud Foundry CLI plugin to create and update User Provided Services across several Cloud Foundry spaces from a ups-manifest file.
 
