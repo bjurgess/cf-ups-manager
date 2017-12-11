@@ -1,7 +1,7 @@
 package main_test
 
 import (
-	. "cf-ups-manager"
+	. "github.com/bjurgess1/cf-ups-manager"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
