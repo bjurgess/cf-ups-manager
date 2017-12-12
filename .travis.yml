@@ -6,4 +6,4 @@ go:
   - 1.9.x
   - master
 
-gobuild_args: -x -i -ldflags "-X main.PluginVersion=0.1.0"
+gobuild_args: -x -ldflags "-X main.PluginVersion=0.1.0"
