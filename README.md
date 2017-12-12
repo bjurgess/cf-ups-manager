@@ -9,12 +9,12 @@ You can download the plugin from the CF Community Repository:
 cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
 cf install-plugin ups-manager -r CF-Community
 ```
-Or, if you have go installed:
+Or, if you have Go installed:
 ```
 go get -u github.com/bjurgess/cf-ups-manager
 cf install-plugin $GOTPATH/bin/cf-ups-manager
 ```
-Additionally, you can download the latest binary and palce the binary on your path. Then run:
+Additionally, you can download the latest binary and place the binary on your path. Then run:
 ```
 cf install-plugin [path/to/cf-ups-manager]
 ```
@@ -57,6 +57,6 @@ spaces:
 ```
 
 ### Manifest Requirements
-* Currently, a UPS must have a list of credentials associated with it
+* Currently, a UPS must either have credentials, route-service, or syslog configured
 * The name of the space ***must*** match the name of the space in cloud foundry
 * You must have your target set to the space you wish to deploy
