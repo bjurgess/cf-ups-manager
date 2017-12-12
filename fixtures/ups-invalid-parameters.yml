@@ -12,9 +12,7 @@ spaces:
       Credential1: 1
       Credential2: 2
       Credential3: 3
-  - name: UPS3
     syslog: "sylog://logs.example.com:1234"
-  - name: UPS4
     route-service: "routeservce://logs.example.com:1234"
 - name: qa
   user-provided-services:

@@ -75,6 +75,7 @@ var _ = Describe("UPS Deployer", func() {
 			spaceone utils.Space
 			spacetwo utils.Space
 			spacezero utils.Space
+			routeandsyslogspace utils.Space
 		)
 
 		BeforeEach(func() {
@@ -115,6 +116,20 @@ var _ = Describe("UPS Deployer", func() {
 
 				},
 			}
+
+			routeandsyslogspace = utils.Space{
+				Name: "RouteAndSyslog",
+				UserProvidedServices: []utils.UserProvidedService {
+					{
+						Name: "UPS1",
+						RouteService: "RouteService",
+					},
+					{
+						Name: "UPS2",
+						Syslog: "Syslog",
+					},
+				},
+			}
 		})
 
 		It("Should call ccups twice", func() {
@@ -138,6 +153,15 @@ var _ = Describe("UPS Deployer", func() {
 			p.Deploy(spacezero, nil)
 			cfCommands := getAllCfCommands(&connection)
 			Expect(cfCommands).To(Equal([]string{
+			}))
+		})
+
+		It("Should call ccups for RouteService and Syslog", func() {
+			p.Deploy(routeandsyslogspace, nil)
+			cfCommands := getAllCfCommands(&connection)
+			Expect(cfCommands).To(Equal([]string{
+				"cups UPS1 -r RouteService",
+				"cups UPS2 -l Syslog",
 			}))
 		})
 
@@ -208,6 +232,24 @@ var _ = Describe("UPS Deployer", func() {
 			}))
 			Expect(len(deployExistsWithErrors)).To(Equal(1))
 			Expect(deployExistsWithErrors[0]).To(HaveOccurred())
+		})
+
+		It("Should call UUPS when CUPS returns error for routeservice and syslog", func() {
+			connection.CliCommandStub = func(args ...string) ([]string, error) {
+				if args[0] == "cups" {
+					return nil, &exec.Error{}
+				} else {
+					return []string{"Success"}, nil
+				}
+			}
+			p.Deploy(routeandsyslogspace, nil)
+			cfCommands := getAllCfCommands(&connection)
+			Expect(cfCommands).To(Equal([]string{
+				"cups UPS1 -r RouteService",
+				"uups UPS1 -r RouteService",
+				"cups UPS2 -l Syslog",
+				"uups UPS2 -l Syslog",
+			}))
 		})
 	})
 })

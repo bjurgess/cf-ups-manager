@@ -43,6 +43,10 @@ spaces:
       Credential1: 1
       Credential2: 2
       Credential3: 3
+  - name: UPS3
+    route-service: "http://route-service.cf.com"
+  - name: UPS4
+    syslog: "syslog://syslog.example.com"
 - name: qa
   user-provided-services:
   - name: UPSqa1
@@ -50,13 +54,9 @@ spaces:
       Credential1: 1
       Credential2: 2
       Credential3: 3
-- name: stage
-  user-provided-services:
 ```
 
 ### Manifest Requirements
 * Currently, a UPS must have a list of credentials associated with it
-* Does not work with syslog urls yet
-* Does not work with route-services yet 
 * The name of the space ***must*** match the name of the space in cloud foundry
 * You must have your target set to the space you wish to deploy

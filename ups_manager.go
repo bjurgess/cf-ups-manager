@@ -58,8 +58,14 @@ func (p *UPSDeploy) CreateUserProvidedService(ups utils.UserProvidedService) err
 	if err != nil {
 		return err
 	}
+	if ups.Credentials != nil && len(ups.Credentials) > 0 {
+		_, err = p.Connection.CliCommand("cups", ups.Name, "-p", fmt.Sprintf("'%s'", jsonString))
+	} else if ups.Syslog != "" {
+		_, err = p.Connection.CliCommand("cups", ups.Name, "-l", ups.Syslog)
+	} else {
+		_, err = p.Connection.CliCommand("cups", ups.Name, "-r", ups.RouteService)
+	}
 
-	_, err = p.Connection.CliCommand("cups", ups.Name, "-p", fmt.Sprintf("'%s'", jsonString))
 	return err
 }
 
@@ -70,6 +76,13 @@ func (p *UPSDeploy) UpdateUserProvidedService(ups utils.UserProvidedService) err
 		return err
 	}
 
-	_, err = p.Connection.CliCommand("uups", ups.Name, "-p", fmt.Sprintf("'%s'", jsonString))
+	if ups.Credentials != nil && len(ups.Credentials) > 0 {
+		_, err = p.Connection.CliCommand("uups", ups.Name, "-p", fmt.Sprintf("'%s'", jsonString))
+	} else if ups.Syslog != "" {
+		_, err = p.Connection.CliCommand("uups", ups.Name, "-l", ups.Syslog)
+	} else {
+		_, err = p.Connection.CliCommand("uups", ups.Name, "-r", ups.RouteService)
+	}
+
 	return err
 }

@@ -13,12 +13,12 @@ var _ = Describe("User Provided Service", func() {
 	BeforeEach(func() {
 		userProvidecServices = []UserProvidedService{
 			{
-				"UPS1",
-				map[string]string{"Credential1":"1", "Credential2":"2"},
+				Name: "UPS1",
+				Credentials: map[string]string{"Credential1":"1", "Credential2":"2"},
 			},
 			{
-				"UPS2",
-				map[string]string{"Credential3":"1", "Credential4":"2"},
+				Name: "UPS2",
+				Credentials: map[string]string{"Credential3":"1", "Credential4":"2"},
 			},
 		}
 

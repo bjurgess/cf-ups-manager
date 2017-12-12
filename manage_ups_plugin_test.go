@@ -80,6 +80,8 @@ var _ = Describe("UPS Deployer", func() {
 			Expect(cfCommands).To(Equal([]string{
 				"cups UPS1 -p '{\"Credential1\":\"1\",\"Credential2\":\"2\",\"Credential3\":\"3\"}'",
 				"cups UPS2 -p '{\"Credential1\":\"1\",\"Credential2\":\"2\",\"Credential3\":\"3\"}'",
+				"cups UPS3 -l sylog://logs.example.com:1234",
+				"cups UPS4 -r routeservce://logs.example.com:1234",
 			}))
 		})
 

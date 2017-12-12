@@ -41,7 +41,7 @@ var _ = Describe("Services Test Suite", func() {
 				})
 
 				It("Should have 2 user provided services", func() {
-					Expect(len(UPSes)).To(Equal(2))
+					Expect(len(UPSes)).To(Equal(4))
 				})
 
 				It("Should have a UPS named UPS2", func() {
@@ -64,6 +64,26 @@ var _ = Describe("Services Test Suite", func() {
 						Expect(ups.Credentials["Credential1"]).To(Equal("1"))
 						Expect(ups.Credentials["Credential2"]).To(Equal("2"))
 						Expect(ups.Credentials["Credential3"]).To(Equal("3"))
+					})
+				})
+
+				Context("RouteServices and Syslog", func() {
+					It("Should have ups with route service set", func() {
+						routeUPS := env.Spaces[0].UserProvidedServices[3]
+						Expect(routeUPS.RouteService).To(Equal("routeservce://logs.example.com:1234"))
+						Expect(routeUPS.Credentials).To(BeNil())
+					})
+
+					It("Should have ups with route service set", func() {
+						syslogUPS := env.Spaces[0].UserProvidedServices[2]
+						Expect(syslogUPS.Syslog).To(Equal("sylog://logs.example.com:1234"))
+						Expect(syslogUPS.Credentials).To(BeNil())
+					})
+
+					It("Should return error when credentials, syslog, and route-service are set", func() {
+						_, err := ParseFile("../fixtures/ups-invalid-parameters.yml")
+						Expect(err).ToNot(BeNil())
+						Expect(err.Error()).To(Equal("Invalid User Provided Service: UPS2"))
 					})
 				})
 			})
