@@ -1,0 +1,17 @@
+spaces:
+- name: pcfdev-space
+  user-provided-services:
+  - name: USERPROVIDEDSERVICE
+    credentials:
+      uri: redis://localhost:8080
+      username: hello
+      password: 12345
+  - name: routeservice
+    route-service: http://localhost:9999
+  - name: sylog
+    syslog: syslog://localhost:8888
+  - name: Test-Mysql
+    credentials:
+      uri: mysql://localhost:8080
+      username: hello
+      password: world

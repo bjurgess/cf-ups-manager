@@ -1,0 +1,25 @@
+#!/bin/bash
+
+PLUGIN_NAME="cf-ups-manager"
+PLUGIN_VERSION=$1
+
+if [[ -z $PLUGIN_VERSION ]]; then
+    echo "Plugin version must be supplied"
+    exit 1
+fi
+
+mkdir -p artifacts
+
+targets=(
+    "osx darwin amd64"
+    "win64 windows amd64"
+    "linux64 linux amd64"
+)
+
+for target in "${targets[@]}"
+do
+    read platform goos goarch <<< $target
+    binary_name="${PLUGIN_NAME}.$platform"
+    GOOS="$goos" GOARCH="$goarch" go build -ldflags "-X main.PluginVersion=${PLUGIN_VERSION}" -o "$binary_name"
+    mv $binary_name artifacts
+done

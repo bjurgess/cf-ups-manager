@@ -21,7 +21,7 @@ func (p *DeployUPSCmd) GetMetadata() plugin.PluginMetadata {
 	fmt.Sscanf(PluginVersion, "%d.%d.%d", &major, &minor, &build)
 
 	return plugin.PluginMetadata{
-		Name: "User Provided Service Manager",
+		Name: "user-provided-service-manager",
 		Version: plugin.VersionType{
 			Major: major,
 			Minor: minor,
